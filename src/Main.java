@@ -1,9 +1,8 @@
-import Builder.Director;
-import Prototype.ConcretePrototype;
-import Prototype.IPrototype;
+import Prototype.*;
 import fabric_method.*;
 import  abstract_factory.*;
 import Builder.*;
+import Singleton.*;
 
 import java.util.Scanner;
 
@@ -16,6 +15,8 @@ public class Main {
                 System.out.println("1. Factory");
                 System.out.println("2. Abstract Factory");
                 System.out.println("3. Builder");
+                System.out.println("4. Prototype");
+                System.out.println("5. Singleton");
                 System.out.println("0. Exit");
                 String command = scanner.nextLine();
                 switch (command) {
@@ -81,6 +82,10 @@ public class Main {
                         original.display();
                         IPrototype prototype = original.clone();
                         prototype.display();
+                        break;
+                    case "Singleton":
+                        Singleton singleton = Singleton.getInstance();
+                        singleton.doSomething();
                         break;
                     case "Exit":
                         running = false;
