@@ -1,4 +1,5 @@
 import fabric_method.*;
+import  abstract_factory.*;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class Main {
             while (running) {
                 System.out.println("Select patterns");
                 System.out.println("1. Factory");
+                System.out.println("2. Abstract Factory");
                 System.out.println("0. Exit");
                 String command = scanner.nextLine();
                 switch (command) {
@@ -25,6 +27,23 @@ public class Main {
                             continue;
                         }
                         dialog.render();
+                        break;
+                    case "Abstract Factory":
+                        System.out.println("Choose OS (Mac/Win):");
+                        String osType = scanner.nextLine();
+
+                        IFactory factory;
+                        if ("Mac".equalsIgnoreCase(osType)) {
+                            factory = new MacFactory();
+                        } else if ("Win".equalsIgnoreCase(osType)) {
+                            factory = new WinFactory();
+                        } else {
+                            System.out.println("Unknown OS type");
+                            continue;
+                        }
+
+                        IButton button = factory.createButton();
+                        button.paint();
                         break;
                     case "Exit":
                         running = false;
