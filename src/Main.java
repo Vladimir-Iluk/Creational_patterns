@@ -1,4 +1,6 @@
 import Builder.Director;
+import Prototype.ConcretePrototype;
+import Prototype.IPrototype;
 import fabric_method.*;
 import  abstract_factory.*;
 import Builder.*;
@@ -68,6 +70,17 @@ public class Main {
                         System.out.println("Car built:\n" + car.getCarType());
                         Manual carManual = manualBuilder.getResult();
                         System.out.println("\nCar manual built:\n" + carManual.print());
+                        break;
+                    case "Prototype":
+                        System.out.println("Enter age");
+                        int age = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Enter name");
+                        String name = scanner.nextLine();
+                        ConcretePrototype original = new ConcretePrototype(age, name);
+                        original.display();
+                        IPrototype prototype = original.clone();
+                        prototype.display();
                         break;
                     case "Exit":
                         running = false;
